@@ -89,7 +89,7 @@ public class TemplateController : MonoBehaviour
         {
             legRenderers[i].GetComponent<MudRenderer>().LockMesh(false, false);
         }
-        AttatchToRig();
+        //AttatchToRig();
     }
 
     void AttatchToRig()
@@ -257,19 +257,19 @@ public class TemplateController : MonoBehaviour
         {
             for (int i = 0; i < newBones.Count; i++)
             {
-                newBones[i].transform.parent.GetComponent<MudBun.MudMaterial>().Color = color;
+                newBones[i].transform.parent.GetComponent<MudMaterial>().Color = color;
             }
         }
 
         for (int x = 0; x < bones.Count; x++)
         {
-            bones[x].transform.parent.GetComponent<MudBun.MudMaterial>().Color = color;
+            bones[x].transform.parent.GetComponent<MudMaterial>().Color = color;
         }
     }
 
     public void Enable2LegTemplate()
     {
-        mudRenderer.gameObject.SetActive(true);
+        //mudRenderer.gameObject.SetActive(true);
         UIManager.instance.EnableNavButtons();
     }
 

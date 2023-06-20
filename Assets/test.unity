@@ -3902,7 +3902,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: cd61d0861a8503945a4539e887f92964, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd61d0861a8503945a4539e887f92964, type: 3}
@@ -27111,46 +27111,46 @@ MonoBehaviour:
   mudSphere: {fileID: 0}
   template: {fileID: 0}
   bones:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 669669281}
+  - {fileID: 1180927862}
+  - {fileID: 588993621}
+  - {fileID: 571358155}
+  - {fileID: 1360026051}
+  - {fileID: 1728920502}
+  - {fileID: 1506520393}
+  - {fileID: 1701905080}
+  - {fileID: 1254847545}
+  - {fileID: 742348839}
+  - {fileID: 1715804443}
+  - {fileID: 2078010431}
+  - {fileID: 365989978}
+  - {fileID: 1000817724}
+  - {fileID: 1714271766}
+  - {fileID: 1011461874}
+  - {fileID: 170529436}
+  - {fileID: 2037132045}
+  - {fileID: 895415435}
+  - {fileID: 703275214}
+  - {fileID: 1203455739}
+  - {fileID: 1129883809}
+  - {fileID: 1066734084}
+  - {fileID: 1735153346}
+  - {fileID: 848779493}
+  - {fileID: 307535599}
+  - {fileID: 433312501}
+  - {fileID: 70426821}
+  - {fileID: 1364490168}
+  - {fileID: 944545216}
+  - {fileID: 912821393}
+  - {fileID: 1806512563}
+  - {fileID: 1766411974}
+  - {fileID: 1925710879}
+  - {fileID: 668271360}
+  - {fileID: 1276356840}
+  - {fileID: 131964417}
+  - {fileID: 999060561}
+  - {fileID: 1271365467}
+  - {fileID: 1605059684}
   newBones: []
   colours: {fileID: 0}
   selectedBone: {fileID: 0}

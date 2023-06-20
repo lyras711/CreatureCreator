@@ -22,7 +22,7 @@ public class UINav : MonoBehaviour
         paintTab.SetActive(false);
         addTab.SetActive(false);
 
-        TemplateController.instance.TriggerBonesVisible(false);
+        //TemplateController.instance.TriggerBonesVisible(false);
         TemplateController.instance.TriggerColoursVisible(false);
         UIManager.instance.TriggerBoneColouringUI(true);
     }
