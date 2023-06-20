@@ -73,18 +73,18 @@ Material:
     m_Floats:
     - _BumpScale: 1
     - _CelExtraEnabled: 1
-    - _CelNumSteps: 5
+    - _CelNumSteps: 3
     - _CelPrimaryMode: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _FlatRimEdgeSmoothness: 0.978
-    - _FlatRimLightAlign: 0.374
-    - _FlatRimSize: 0.167
-    - _FlatSpecularEdgeSmoothness: 0
-    - _FlatSpecularSize: 0.1
-    - _Flatness: 0.192
-    - _FlatnessExtra: 0.65
+    - _FlatRimEdgeSmoothness: 1
+    - _FlatRimLightAlign: 0.715
+    - _FlatRimSize: 0.115
+    - _FlatSpecularEdgeSmoothness: 0.83
+    - _FlatSpecularSize: 0.569
+    - _Flatness: 0.555
+    - _FlatnessExtra: 0.74
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -99,10 +99,10 @@ Material:
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _RimEnabled: 1
-    - _SelfShadingSize: 0.901
-    - _SelfShadingSizeExtra: 0.039
-    - _ShadowEdgeSize: 0.091
-    - _ShadowEdgeSizeExtra: 0.218
+    - _SelfShadingSize: 0.526
+    - _SelfShadingSizeExtra: 0.446
+    - _ShadowEdgeSize: 0.324
+    - _ShadowEdgeSizeExtra: 0.119
     - _SmoothnessTextureChannel: 0
     - _SpecularEnabled: 0
     - _SpecularHighlights: 1
@@ -117,13 +117,13 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _ColorDim: {r: 0.21003917, g: 0.48408887, b: 0.754717, a: 0.85056}
-    - _ColorDimCurve: {r: 0.735849, g: 0.1492524, b: 0.1492524, a: 0.85056}
-    - _ColorDimExtra: {r: 0.7075472, g: 0.44387856, b: 0, a: 0.85056}
-    - _ColorDimSteps: {r: 0.509434, g: 0.38754562, b: 0.261926, a: 0.85056}
-    - _ColorGradient: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
+    - _ColorDim: {r: 0, g: 0.5734933, b: 0.8490566, a: 0.85056}
+    - _ColorDimCurve: {r: 0.5660378, g: 0.54569244, b: 0.54200786, a: 0.85056}
+    - _ColorDimExtra: {r: 0.3317462, g: 0.47931978, b: 0.990566, a: 0.85056}
+    - _ColorDimSteps: {r: 1, g: 1, b: 1, a: 0.85056}
+    - _ColorGradient: {r: 1, g: 0.5235849, b: 0.5235849, a: 0.85056}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FlatRimColor: {r: 0.8490566, g: 0.40953743, b: 0.07609467, a: 0.85056}
+    - _FlatRimColor: {r: 0.9339623, g: 0.2067751, b: 0.074893214, a: 0.85056}
     - _FlatSpecularColor: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
     - _UnityShadowColor: {r: 0.85023, g: 0.85034, b: 0.8504499, a: 0.85056}
   m_BuildTextureStacks: []
