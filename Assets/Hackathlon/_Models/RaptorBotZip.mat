@@ -8,11 +8,16 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: RaptorBotZip
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: bee44b4a58655ee4cbff107302a3e131, type: 3}
   m_ValidKeywords:
+  - DR_CEL_EXTRA_ON
+  - DR_RIM_ON
+  - _CELPRIMARYMODE_SINGLE
+  - _TEXTUREBLENDINGMODE_MULTIPLY
+  - _UNITYSHADOWMODE_MULTIPLY
+  m_InvalidKeywords:
   - _EMISSION
   - _GLOSSYREFLECTIONS_OFF
-  m_InvalidKeywords: []
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -55,7 +60,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: bd71442c93193224399b258cc9c8c925, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -93,7 +98,7 @@ Material:
     - _BlendOp: 0
     - _BumpScale: 1
     - _CameraDistanceImpact: 0
-    - _CelExtraEnabled: 0
+    - _CelExtraEnabled: 1
     - _CelNumSteps: 3
     - _CelPrimaryMode: 1
     - _ClearCoatMask: 0
@@ -104,15 +109,15 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EnvironmentReflections: 1
-    - _FlatRimEdgeSmoothness: 0.5
-    - _FlatRimLightAlign: 0
-    - _FlatRimSize: 0.5
-    - _FlatSpecularEdgeSmoothness: 0
-    - _FlatSpecularSize: 0.1
+    - _FlatRimEdgeSmoothness: 0.285
+    - _FlatRimLightAlign: 0.366
+    - _FlatRimSize: 0.285
+    - _FlatSpecularEdgeSmoothness: 0.194
+    - _FlatSpecularSize: 0.214
     - _Flatness: 1
-    - _FlatnessExtra: 1
+    - _FlatnessExtra: 0.877
     - _GlossMapScale: 0
-    - _Glossiness: 0
+    - _Glossiness: 0.596
     - _GlossyReflections: 0
     - _GradientAngle: 0
     - _GradientCenterX: 0
@@ -123,7 +128,7 @@ Material:
     - _LightFalloffSize: 0.0001
     - _LightmapDirectionPitch: 0
     - _LightmapDirectionYaw: 0
-    - _Metallic: 0
+    - _Metallic: 1
     - _Mode: 0
     - _OcclusionStrength: 1
     - _OutlineDepthOffset: 0
@@ -135,10 +140,10 @@ Material:
     - _ReceiveShadows: 1
     - _RimEnabled: 1
     - _SampleGI: 0
-    - _SelfShadingSize: 0.629
-    - _SelfShadingSizeExtra: 0.6
+    - _SelfShadingSize: 0.536
+    - _SelfShadingSizeExtra: 0.619
     - _ShadowEdgeSize: 0.158
-    - _ShadowEdgeSizeExtra: 0.05
+    - _ShadowEdgeSizeExtra: 0.185
     - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularEnabled: 0
@@ -157,13 +162,13 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 0, g: 0, b: 0, a: 1}
-    - _ColorDim: {r: 0.745283, g: 0.745283, b: 0.745283, a: 1}
-    - _ColorDimCurve: {r: 0.85023, g: 0.85034, b: 0.8504499, a: 0.85056}
-    - _ColorDimExtra: {r: 0.85023, g: 0.85034, b: 0.8504499, a: 0.85056}
-    - _ColorDimSteps: {r: 0.85023, g: 0.85034, b: 0.8504499, a: 0.85056}
+    - _ColorDim: {r: 0, g: 0, b: 0, a: 1}
+    - _ColorDimCurve: {r: 0.16981131, g: 0.16981131, b: 0.16981131, a: 0.85056}
+    - _ColorDimExtra: {r: 0.19729266, g: 0.19562119, b: 0.26415092, a: 0.85056}
+    - _ColorDimSteps: {r: 0.16981131, g: 0.16420433, b: 0.16420433, a: 0.85056}
     - _ColorGradient: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FlatRimColor: {r: 1, g: 1, b: 1, a: 1}
+    - _FlatRimColor: {r: 0.052865773, g: 0.062352307, b: 0.11320752, a: 1}
     - _FlatSpecularColor: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
     - _LightmapDirection: {r: 0, g: 1, b: 0, a: 0}
     - _OutlineColor: {r: 1, g: 0.8172233, b: 0.2783019, a: 1}
