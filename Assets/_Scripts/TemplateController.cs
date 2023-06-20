@@ -263,7 +263,7 @@ public class TemplateController : MonoBehaviour
 
         for (int x = 0; x < bones.Count; x++)
         {
-            bones[x].transform.parent.GetComponent<MudMaterial>().Color = color;
+            bones[x].GetComponent<MudMaterial>().Color = color;
         }
     }
 
