@@ -9,23 +9,13 @@ public class TemplateController : MonoBehaviour
 
     UtilityFunctions utils;
 
-    public Transform mudRenderer;
-    public GameObject mudSphere;
-
-    public Transform template;
     public List<Transform> bones = new List<Transform>();
     public List<Transform> newBones = new List<Transform>();
 
-    public GameObject colours;
-
-    public Bone selectedBone;
-    public NewBone selectedNewBone;
+    private Bone selectedBone;
+    private NewBone selectedNewBone;
 
     bool itemActive = false;
-    public GameObject objRef;
-
-    GameObject itemObj1;
-    GameObject itemObj2;
 
     public GameObject deformObj;
     private Transform deformObjTransform;
@@ -40,7 +30,7 @@ public class TemplateController : MonoBehaviour
     public MudRenderer[] legRenderers;
     public Transform curParent;
 
-    public GameObject pelvisObj;
+    public int blobsRemaining = 20;
 
     private void Awake()
     {
@@ -58,29 +48,8 @@ public class TemplateController : MonoBehaviour
     void Start()
     {
         utils = UtilityFunctions.instance;
-    }
 
-    void SpawnNewBones()
-    {
-        for (int i = 0; i < bones.Count; i++)
-        {
-            if (bones[i].GetComponent<MeshRenderer>())
-            {
-                newBones.Add(bones[i]);
-            }
-        }
-
-        for (int i = 0; i < bones.Count; i++)
-        {
-            Instantiate(mudSphere, bones[i].position, bones[i].rotation, mudRenderer);
-        }
-
-        /*        foreach (Transform item in template)
-                {
-                    Instantiate(mudSphere, item.position, item.rotation, mudRenderer);
-                }*/
-
-        template.gameObject.SetActive(false);
+        UIManager.instance.SetBlobsRemaining(blobsRemaining);
     }
 
     public void CompleteMesh()
@@ -274,9 +243,18 @@ public class TemplateController : MonoBehaviour
     }
 
 
-    public void CreateDeformSphere()
+    float blobSize;
+    int blobsToRemove = 1;
+    bool newBlob = false;
+    public void CreateDeformSphere(float size)
     {
-        if(deformObjTransform != null)
+        blobSize = size;
+
+        if (!HaveBlobs())
+            return;
+
+        newBlob = true;
+        if (deformObjTransform != null)
         {
             DestroyDeformSphere();
         }
@@ -290,18 +268,53 @@ public class TemplateController : MonoBehaviour
         else
             position = selectedBone.transform.position;
         deformObjTransform = Instantiate(deformObj, position, Quaternion.identity, legsParts[0]).transform;
+        deformObjTransform.GetComponent<MudSphere>().Radius = size;
         deformObjTransform.gameObject.SetActive(true);
 
-        UIManager.instance.SetDeformSphere(deformObjTransform.GetComponent<MudBun.MudSphere>());
+        UIManager.instance.SetDeformSphere(deformObjTransform.GetComponent<MudSphere>());
+        UIManager.instance.TriggerBlobButtons(true);
         
         //TOdo set ui
     }
+
+    bool HaveBlobs()
+    {
+        if (blobSize == 0.2f)
+        {
+            if (blobsRemaining > 0)
+            {
+                blobsToRemove = 1;
+                return true;
+            }
+        }
+        if (blobSize == 0.4f)
+        {
+            if (blobsRemaining > 1)
+            {
+                blobsToRemove = 2;
+                return true;
+            }
+        }
+        if (blobSize == 0.6f)
+        {
+            if (blobsRemaining > 2)
+            {
+                blobsToRemove = 3;
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 
     public void ConfirmDeform()
     {
         if (deformObjTransform == null)
             return;
 
+        newBlob = false;
+        blobsRemaining -= blobsToRemove;
         deformObjTransform.GetChild(0).gameObject.SetActive(false);
         deformObjTransform.GetChild(0).gameObject.AddComponent<SphereCollider>();
         deformObjTransform.gameObject.AddComponent<SphereCollider>();
@@ -309,16 +322,25 @@ public class TemplateController : MonoBehaviour
         newBones.Add(deformObjTransform.GetChild(0));
         deformObjTransform = null;
         TriggerNewBonesVisible(true);
-        //Set UI
+        UIManager.instance.TriggerBlobButtons(false);
+        UIManager.instance.SetBlobsRemaining(blobsRemaining);
     }
 
     public void DestroyDeformSphere()
     {
         if (deformObjTransform == null)
             return;
+
+        if (!newBlob)
+        {
+            blobsRemaining++;
+            UIManager.instance.SetBlobsRemaining(blobsRemaining);
+        }
+        else
+            newBlob = false;
         Destroy(deformObjTransform.gameObject);
         deformObjTransform = null;
         TriggerNewBonesVisible(true);
-        //TODO: set ui
+        UIManager.instance.TriggerBlobButtons(false);
     }
 }

@@ -9,6 +9,7 @@ public class UINav : MonoBehaviour
     public GameObject meshTab;
     public GameObject paintTab;
     public GameObject addTab;
+    public GameObject meshInfo;
 
 
     [Header("Colors")]
@@ -21,6 +22,7 @@ public class UINav : MonoBehaviour
         meshTab.SetActive(false);
         paintTab.SetActive(false);
         addTab.SetActive(false);
+        meshInfo.SetActive(false);
 
         //TemplateController.instance.TriggerBonesVisible(false);
         TemplateController.instance.TriggerColoursVisible(false);
@@ -33,10 +35,13 @@ public class UINav : MonoBehaviour
         baseTab.SetActive(true);
     }
 
+
+
     public void OpenMeshTab()
     {
         DisableAllTabs();
         meshTab.SetActive(true);
+        meshInfo.SetActive(true);
         //TemplateController.instance.TriggerBonesVisible(true);
     }
 

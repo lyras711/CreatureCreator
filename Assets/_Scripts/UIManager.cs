@@ -30,6 +30,10 @@ public class UIManager : MonoBehaviour
     public Button paintButton;
     public Button addButton;
 
+    public Button blobDestroyButton;
+    public Button blobConfirmButton;
+    public Text blobsRemainingText;
+
     private void Awake()
     {
         if (instance == null)
@@ -52,6 +56,12 @@ public class UIManager : MonoBehaviour
         blendSlider.gameObject.SetActive(true);
         radiusSlider.gameObject.SetActive(true);
         rotateButton.SetActive(true);
+    }
+
+    public void TriggerBlobButtons(bool active)
+    {
+        blobConfirmButton.interactable = active;
+        blobDestroyButton.interactable = active;
     }
 
     public void TriggerBoneColouringUI(bool active)
@@ -118,6 +128,11 @@ public class UIManager : MonoBehaviour
 
         fillPanel.SetActive(false);
         deformPanel.SetActive(true);
+    }
+
+    public void SetBlobsRemaining(int blobs)
+    {
+        blobsRemainingText.text = "Blobs Remaining: " + blobs;
     }
 
     public void DeselectBone()
