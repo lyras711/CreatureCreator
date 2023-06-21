@@ -77,16 +77,20 @@ public class TemplateController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Ray ray1 = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hitInfo1;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if(Physics.Raycast(ray1, out hitInfo1, 100f))
+            RaycastHit[] hitInfo1;
+
+            hitInfo1 = Physics.RaycastAll(ray, 100f);
+
+            for (int i = 0; i < hitInfo1.Length; i++)
             {
-                if(hitInfo1.collider.GetComponent<Bone>())
+                RaycastHit hit = hitInfo1[i];
+                if (hit.collider.GetComponent<Bone>())
                 {
-                    if(selectedBone != hitInfo1.collider.GetComponent<Bone>())
+                    if (selectedBone != hit.collider.GetComponent<Bone>())
                     {
-                        if(selectedBone != null)
+                        if (selectedBone != null)
                         {
                             selectedBone.TriggerBoneSelection(false);
                             selectedBone = null;
@@ -98,14 +102,14 @@ public class TemplateController : MonoBehaviour
                         }
                         if (colouringActive)
                             UIManager.instance.TriggerBoneColouringUI(true);
-                        selectedBone = hitInfo1.collider.GetComponent<Bone>();
+                        selectedBone = hit.collider.GetComponent<Bone>();
                         selectedBone.TriggerBoneSelection(true);
                         UIManager.instance.SetSelectedBone(selectedBone);
                     }
                 }
-                else if (hitInfo1.collider.GetComponent<NewBone>())
+                else if (hit.collider.GetComponent<NewBone>())
                 {
-                    if (selectedNewBone != hitInfo1.collider.GetComponent<NewBone>())
+                    if (selectedNewBone != hit.collider.GetComponent<NewBone>())
                     {
                         if (selectedNewBone != null)
                         {
@@ -119,15 +123,14 @@ public class TemplateController : MonoBehaviour
                         }
                         if (colouringActive)
                             UIManager.instance.TriggerBoneColouringUI(true);
-                        selectedNewBone = hitInfo1.collider.GetComponent<NewBone>();
+                        selectedNewBone = hit.collider.GetComponent<NewBone>();
                         selectedNewBone.TriggerBoneSelection(true);
-                        //UIManager.instance.SetSelectedBone(selectedBone);
                     }
                 }
 
-                if (hitInfo1.collider.GetComponent<NewBone>() && deformObjTransform == null)
+                if (hit.collider.GetComponent<NewBone>() && deformObjTransform == null)
                 {
-                    deformObjTransform = hitInfo1.collider.transform;
+                    deformObjTransform = hit.collider.transform;
 
                     Destroy(deformObjTransform.gameObject.GetComponent<SphereCollider>());
                     Destroy(deformObjTransform.GetChild(0).gameObject.GetComponent<SphereCollider>());
@@ -383,17 +386,29 @@ public class TemplateController : MonoBehaviour
         blobToDestroy = deformObjTransform.gameObject;
         newBlob = false;
         blobsRemaining -= blobsToRemove;
+
         deformObjTransform.GetChild(0).gameObject.SetActive(false);
         deformObjTransform.GetChild(0).gameObject.AddComponent<SphereCollider>();
         deformObjTransform.gameObject.AddComponent<SphereCollider>();
         deformObjTransform.GetComponent<SphereCollider>().isTrigger = true;
 
-        if(!newBones.Contains(deformObjTransform.GetChild(0)))
+        if (!newBones.Contains(deformObjTransform.GetChild(0)))
             newBones.Add(deformObjTransform.GetChild(0));
         deformObjTransform = null;
         TriggerNewBonesVisible(true);
-        //UIManager.instance.TriggerBlobButtons(false);
         UIManager.instance.SetBlobsRemaining(blobsRemaining);
+
+        if (deformObjTransformMirror != null)
+        {
+            deformObjTransformMirror.GetChild(0).gameObject.SetActive(false);
+            deformObjTransformMirror.GetChild(0).gameObject.AddComponent<SphereCollider>();
+            deformObjTransformMirror.gameObject.AddComponent<SphereCollider>();
+            deformObjTransformMirror.GetComponent<SphereCollider>().isTrigger = true;
+
+            if (!newBones.Contains(deformObjTransformMirror.GetChild(0)))
+                newBones.Add(deformObjTransformMirror.GetChild(0));
+            deformObjTransformMirror = null;
+        }
     }
 
     public void DestroyDeformSphere()
@@ -411,12 +426,49 @@ public class TemplateController : MonoBehaviour
         Destroy(blobToDestroy);
         blobToDestroy = null;
         TriggerNewBonesVisible(true);
+        DestroyMirrorSphere();
         //UIManager.instance.TriggerBlobButtons(false);
     }
 
     void DestroyMirrorSphere()
     {
-        Destroy(deformObjTransformMirror.gameObject);
-        deformObjTransformMirror = null;
+        if(deformObjTransformMirror != null)
+        {
+            Destroy(deformObjTransformMirror.gameObject);
+            deformObjTransformMirror = null;
+        }
+    }
+
+    bool CheckIfCanPlace()
+    {
+        SphereCollider col = deformObjTransform.GetComponent<SphereCollider>();
+        NewBone bone = deformObjTransform.GetComponent<NewBone>();
+
+        if (blobSize == 0.2f)
+        {
+            col.radius = 0.75f;
+            if (bone.canPlace)
+            {
+                return true;
+            }
+        }
+        if (blobSize == 0.5f)
+        {
+            col.radius = 0.1f;
+            if (bone.canPlace)
+            {
+                return true;
+            }
+        }
+        if (blobSize == 0.8f)
+        {
+            col.radius = 0.35f;
+            if (bone.canPlace)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

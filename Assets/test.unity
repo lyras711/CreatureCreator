@@ -3987,6 +3987,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedMat: {fileID: 2100000, guid: f4610346068626a45ab67d5a86aa3013, type: 2}
   defaultMat: {fileID: 2100000, guid: 07fac66897f21b7458ebd75abb41191b, type: 2}
+  canPlace: 0
 --- !u!114 &308794293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29479,6 +29480,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedMat: {fileID: 2100000, guid: f4610346068626a45ab67d5a86aa3013, type: 2}
   defaultMat: {fileID: 2100000, guid: 07fac66897f21b7458ebd75abb41191b, type: 2}
+  canPlace: 0
 --- !u!1 &1954398579
 GameObject:
   m_ObjectHideFlags: 0
@@ -31008,7 +31010,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &2067489489
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -31972,7 +31974,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &2109724517
 BoxCollider:
   m_ObjectHideFlags: 0
