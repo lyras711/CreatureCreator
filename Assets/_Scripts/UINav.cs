@@ -1,6 +1,3 @@
-using MudBun;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class UINav : MonoBehaviour
@@ -12,10 +9,6 @@ public class UINav : MonoBehaviour
     public GameObject meshInfo;
 
 
-    [Header("Colors")]
-    public MudMaterial[] details1;
-    public MudMaterial[] details2;
-
     private void DisableAllTabs()
     {
         baseTab.SetActive(false);
@@ -25,8 +18,6 @@ public class UINav : MonoBehaviour
         meshInfo.SetActive(false);
 
         TemplateController.instance.TriggerNewBonesVisible(false);
-        //TemplateController.instance.TriggerColoursVisible(false);
-        //UIManager.instance.TriggerBoneColouringUI(true);
     }
 
     public void OpenBaseTab()
@@ -34,8 +25,6 @@ public class UINav : MonoBehaviour
         DisableAllTabs();
         baseTab.SetActive(true);
     }
-
-
 
     public void OpenMeshTab()
     {
@@ -63,24 +52,8 @@ public class UINav : MonoBehaviour
         TemplateController.instance.SetBodyColour(color);
     }
 
-    public void SetDetails1(Color color)
-    {
-        for (int i = 0; i < details1.Length; i++)
-        {
-            details1[i].Color = color;
-        }
-    }
-
     public void SetBoneColour(Color color)
     {
         TemplateController.instance.SetBoneColour(color);
-    }
-
-    public void SetDetails2(Color color)
-    {
-        for (int i = 0; i < details2.Length; i++)
-        {
-            details2[i].Color = color;
-        }
     }
 }

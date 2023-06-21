@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class NewBone : MonoBehaviour
 {
-    private Renderer editRef;
+    public Renderer editRef;
     public Material selectedMat;
     public Material defaultMat;
 
+    public int size = 1;
     public bool canPlace = false;
 
-    private void Start()
+    public GameObject mirrorBone;
+
+    public void SetMirrorBone(GameObject mirrorBone)
     {
-        editRef = transform.GetChild(0).GetComponent<Renderer>();
+        this.mirrorBone = mirrorBone;
     }
 
     public void TriggerBoneSelection(bool active)

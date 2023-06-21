@@ -30,9 +30,15 @@ public class UIManager : MonoBehaviour
     public Button paintButton;
     public Button addButton;
 
-    public Button blobDestroyButton;
-    public Button blobConfirmButton;
+    [Header("Editing")]
+    public GameObject blobDestroyButton;
+    public GameObject blobConfirmButton;
+    public Image toggleBG;
     public Text blobsRemainingText;
+    public Color deformColor;
+    public Color destroyColor;
+
+    bool deform = true;
 
     private void Awake()
     {
@@ -45,6 +51,30 @@ public class UIManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public void ToggleDeformDestroy()
+    {
+        deform = !deform;
+
+        if(deform)
+        {
+            blobDestroyButton.SetActive(false);
+            blobConfirmButton.SetActive(true);
+            toggleBG.color = deformColor;
+        }
+        else
+        {
+            blobDestroyButton.SetActive(true);
+            blobConfirmButton.SetActive(false);
+            toggleBG.color = destroyColor;
+        }
+    }
+
+    public bool InAddMode()
+    {
+        return deform;
+    }
+
     public void SetSelectedBone(Bone bone) 
     {
         this.bone = bone;
@@ -56,12 +86,6 @@ public class UIManager : MonoBehaviour
         blendSlider.gameObject.SetActive(true);
         radiusSlider.gameObject.SetActive(true);
         rotateButton.SetActive(true);
-    }
-
-    public void TriggerBlobButtons(bool active)
-    {
-        blobConfirmButton.interactable = active;
-        blobDestroyButton.interactable = active;
     }
 
     public void TriggerBoneColouringUI(bool active)
