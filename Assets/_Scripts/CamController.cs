@@ -10,6 +10,7 @@ public class CamController : MonoBehaviour
 
     public GameObject deformLayer1;
     public GameObject deformLayer2;
+    public GameObject deformLayer3;
 
     bool deformlayer1 = true;
 
@@ -41,11 +42,16 @@ public class CamController : MonoBehaviour
         transform.DORotateQuaternion(defRot, 1f);
     }
 
+    bool rotating = false;
     public void RotateCam()
     {
+        if (rotating)
+            return;
+
+        rotating = true;
         float curRot = transform.parent.rotation.eulerAngles.y;
         Vector3 newRot = new Vector3(0, curRot + 90, 0);
-        transform.parent.DORotate(newRot, 1f);
+        transform.parent.DORotate(newRot, 0.5f).OnComplete(() => rotating = false);
 
         deformlayer1 = !deformlayer1;
 
@@ -53,11 +59,13 @@ public class CamController : MonoBehaviour
         {
             deformLayer1.SetActive(true);
             deformLayer2.SetActive(false);
+            deformLayer3.SetActive(false);
         }
         else
         {
             deformLayer1.SetActive(false);
             deformLayer2.SetActive(true);
+            deformLayer3.SetActive(true);
         }
     }
 }

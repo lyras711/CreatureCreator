@@ -24,9 +24,9 @@ public class UINav : MonoBehaviour
         addTab.SetActive(false);
         meshInfo.SetActive(false);
 
-        //TemplateController.instance.TriggerBonesVisible(false);
-        TemplateController.instance.TriggerColoursVisible(false);
-        UIManager.instance.TriggerBoneColouringUI(true);
+        TemplateController.instance.TriggerNewBonesVisible(false);
+        //TemplateController.instance.TriggerColoursVisible(false);
+        //UIManager.instance.TriggerBoneColouringUI(true);
     }
 
     public void OpenBaseTab()
@@ -42,7 +42,7 @@ public class UINav : MonoBehaviour
         DisableAllTabs();
         meshTab.SetActive(true);
         meshInfo.SetActive(true);
-        //TemplateController.instance.TriggerBonesVisible(true);
+        TemplateController.instance.TriggerNewBonesVisible(true);
     }
 
     public void OpenPaintTab()

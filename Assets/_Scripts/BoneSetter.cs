@@ -6,6 +6,8 @@ public class BoneSetter : MonoBehaviour
 {
     public Transform parentToSet;
 
+    public Transform mirrorParent;
+
     public void SetParent()
     {
         transform.SetParent(parentToSet);
