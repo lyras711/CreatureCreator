@@ -17,7 +17,6 @@ public class TemplateController : MonoBehaviour
     private NewBone selectedNewBone;
 
     bool itemActive = false;
-    bool blobMoved = false;
 
     public GameObject deformObj;
     private Transform deformObjTransform;
@@ -29,11 +28,14 @@ public class TemplateController : MonoBehaviour
     public GameObject skeletonRig;
 
     [Header("Mud References")]
+    public Transform initialReference;
     public Transform[] legsParts;
     public MudRenderer[] legRenderers;
     public Transform curParent;
 
     public int blobsRemaining = 20;
+
+    private Transform spawnedBlob;
 
     private void Awake()
     {
@@ -88,46 +90,11 @@ public class TemplateController : MonoBehaviour
             {
                 RaycastHit hit = hitInfo1[i];
 
-/*                if (hit.collider.GetComponent<Bone>())
-                {
-                    if (selectedBone != hit.collider.GetComponent<Bone>())
-                    {
-                        if (selectedBone != null)
-                        {
-                            selectedBone.TriggerBoneSelection(false);
-                            selectedBone = null;
-                        }
-                        if (selectedNewBone != null)
-                        {
-                            selectedNewBone.TriggerBoneSelection(false);
-                            selectedNewBone = null;
-                        }
-                        if (colouringActive)
-                            uiManager.TriggerBoneColouringUI(true);
-                        selectedBone = hit.collider.GetComponent<Bone>();
-                        selectedBone.TriggerBoneSelection(true);
-                        uiManager.SetSelectedBone(selectedBone);
-                    }
-                }
-                else*/
-
                 if (hit.collider.GetComponent<NewBone>())
                 {
 
                     if (selectedNewBone != hit.collider.GetComponent<NewBone>())
                     {
-/*                        if (selectedNewBone != null)
-                        {
-                            selectedNewBone.TriggerBoneSelection(false);
-                            selectedNewBone = null;
-                        }
-                        if (selectedBone != null)
-                        {
-                            selectedBone.TriggerBoneSelection(false);
-                            selectedBone = null;
-                        }
-                        if (colouringActive)
-                            uiManager.TriggerBoneColouringUI(true);*/
                         selectedNewBone = hit.collider.GetComponent<NewBone>();
                         selectedNewBone.TriggerBoneSelection(true);
                     }
@@ -154,42 +121,20 @@ public class TemplateController : MonoBehaviour
                                 mirrorParent = boneSetter.mirrorParent;
 
                             float xPos;
-                            float zPos;
 
                             if (deformObjTransform.localPosition.x > 0)
                                 xPos = -deformObjTransform.localPosition.x;
                             else
                                 xPos = Mathf.Abs(deformObjTransform.localPosition.x);
 
-                            if (deformObjTransform.localPosition.z > 0)
-                                zPos = -deformObjTransform.localPosition.z;
-                            else
-                                zPos = Mathf.Abs(deformObjTransform.localPosition.z);
-
                             deformObjTransformMirror.parent = mirrorParent;
-                            deformObjTransformMirror.localPosition = new Vector3(xPos, deformObjTransform.localPosition.y, zPos);
+                            deformObjTransformMirror.localPosition = new Vector3(xPos, deformObjTransform.localPosition.y, deformObjTransform.localPosition.z);
                         }
 
-                        blobMoved = true;
                         Destroy(deformObjTransform.gameObject.GetComponent<SphereCollider>());
                         Destroy(deformObjTransform.GetChild(0).gameObject.GetComponent<SphereCollider>());
                     }
                 }
-
-/*                if (hit.collider.GetComponent<NewBone>() && deformObjTransform == null)
-                {
-                    deformObjTransform = hit.collider.transform;
-
-                    if(deformObjTransform.GetComponent<NewBone>().mirrorBone != null)
-                    {
-                        deformObjTransformMirror = deformObjTransform.GetComponent<NewBone>().mirrorBone.transform;
-                        Destroy(deformObjTransformMirror.gameObject.GetComponent<SphereCollider>());
-                        Destroy(deformObjTransformMirror.GetChild(0).gameObject.GetComponent<SphereCollider>());
-                    }
-
-                    Destroy(deformObjTransform.gameObject.GetComponent<SphereCollider>());
-                    Destroy(deformObjTransform.GetChild(0).gameObject.GetComponent<SphereCollider>());
-                }*/
             }
         }
 
@@ -225,7 +170,7 @@ public class TemplateController : MonoBehaviour
 
                     float distanceToMiddle = Vector3.Distance(hitInfo.point, new Vector3(0, hitInfo.point.y, 0));
 
-                    if (distanceToMiddle > 0.5f)
+                    if (distanceToMiddle > 0.6f)
                     {
                         if(deformObjTransformMirror == null)
                         {
@@ -234,19 +179,13 @@ public class TemplateController : MonoBehaviour
                         else
                         {
                             float xPos;
-                            float zPos;
 
                             if (deformObjTransform.localPosition.x > 0)
                                 xPos = -deformObjTransform.localPosition.x;
                             else
                                 xPos = Mathf.Abs(deformObjTransform.localPosition.x);
 
-                            if (deformObjTransform.localPosition.z > 0)
-                                zPos = -deformObjTransform.localPosition.z;
-                            else
-                                zPos = Mathf.Abs(deformObjTransform.localPosition.z);
-
-                            deformObjTransformMirror.localPosition = new Vector3(xPos, deformObjTransform.localPosition.y, zPos);
+                            deformObjTransformMirror.localPosition = new Vector3(xPos, deformObjTransform.localPosition.y, deformObjTransform.localPosition.z);
                         }
                     }
                     else
@@ -363,6 +302,13 @@ public class TemplateController : MonoBehaviour
     bool newBlob = false;
     public void CreateDeformSphere(float size)
     {
+        if(blobToDestroy != null)
+        {
+            if(blobToDestroy.transform.parent == initialReference)
+            {
+                DestroyNewBone(blobToDestroy.GetComponent<NewBone>());
+            }
+        }
         blobSize = size;
 
         if (!HaveBlobs())
@@ -378,7 +324,7 @@ public class TemplateController : MonoBehaviour
 
         Vector3 position = new Vector3(0, 1, 0);
 
-        deformObjTransform = Instantiate(deformObj, position, Quaternion.identity, legsParts[0].parent).transform;
+        deformObjTransform = Instantiate(deformObj, position, Quaternion.identity, initialReference).transform;
         deformObjTransform.GetComponent<MudSphere>().Radius = size;
         deformObjTransform.GetComponent<NewBone>().size = blobsToRemove;
         deformObjTransform.gameObject.SetActive(true);
@@ -388,7 +334,7 @@ public class TemplateController : MonoBehaviour
 
     void CreateMirrorBlob()
     {
-        deformObjTransformMirror = Instantiate(deformObj, deformObjTransform.position, Quaternion.identity, legsParts[0].parent).transform;
+        deformObjTransformMirror = Instantiate(deformObj, deformObjTransform.position, Quaternion.identity, initialReference).transform;
         deformObjTransformMirror.GetComponent<MudSphere>().Radius = blobSize;
         deformObjTransformMirror.GetComponent<NewBone>().size = blobsToRemove;
         deformObjTransform.GetComponent<NewBone>().SetMirrorBone(deformObjTransformMirror.gameObject);
