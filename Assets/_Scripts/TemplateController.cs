@@ -64,12 +64,13 @@ public class TemplateController : MonoBehaviour
         {
             legRenderers[i].GetComponent<MudRenderer>().LockMesh(false, true);
         }
-        //AttatchToRig();
+        AttatchToRig();
     }
 
     void AttatchToRig()
     {
         skeletonRig.SetActive(true);
+
         for (int i = 0; i < legRenderers.Length; i++)
         {
             legRenderers[i].GetComponent<BoneSetter>().SetParent();
