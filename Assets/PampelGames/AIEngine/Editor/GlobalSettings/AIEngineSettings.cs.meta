@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 9492e2395147523439bfe8c4dc4e8f1b
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - m_ViewDataDictionary: {instanceID: 0}
+  - aiEngineSettingsSo: {fileID: 11400000, guid: b627323f649427c41a28164f9fb0f50d, type: 2}
+  - chatGPTSettingsSo: {fileID: 11400000, guid: dc53472d9b9a11049ae3edff276a5c71, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,72 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/PampelGames/Shared/Utility/UIToolkit/StyleSheets/InspectorUSS.uss?fileID=7433441132597879392&amp;guid=a67aab0cbc3193846a6c4c491a7d7663&amp;type=3#InspectorUSS" />
+    <ui:VisualElement name="AIEngine">
+        <ui:VisualElement name="Header" style="flex-direction: row; justify-content: space-between; padding-top: 4px;">
+            <ui:VisualElement name="HeaderLeft" style="flex-direction: row;" />
+            <ui:VisualElement name="HeaderMiddle" style="align-items: center; justify-content: center;" />
+            <ui:VisualElement name="HeaderRight" style="flex-direction: row-reverse; padding-right: 2px;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="Input" style="padding-top: 0; margin-top: 2px; padding-bottom: 2px; margin-bottom: 2px;">
+            <ui:VisualElement name="InputIconsTop" style="flex-direction: row; justify-content: space-between; padding-right: 2px;">
+                <ui:VisualElement name="InputIconsTopLeft" style="flex-direction: row; margin-left: 3px; margin-right: 3px;">
+                    <ui:VisualElement name="ReconnectIcon" style="justify-content: center; align-items: center; margin-right: 2px;">
+                        <ui:VisualElement name="reconnectIcon" style="background-image: url(&apos;project://database/Assets/PampelGames/AIEngine/Editor/Icons/WifiIcon.png?fileID=2800000&amp;guid=28e7185eed078764eb329a78f4233860&amp;type=3#WifiIcon&apos;); width: 18px; height: 18px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="notConnected" style="flex-direction: row; align-items: center;">
+                        <ui:VisualElement name="notConnectedIcon" style="background-image: url(&apos;project://database/Assets/PampelGames/AIEngine/Editor/Icons/WarningIcon.png?fileID=2800000&amp;guid=cbe84154a103ec843a98d184ce283fd9&amp;type=3#WarningIcon&apos;); width: 18px; height: 18px;" />
+                        <ui:Label text="Not Connected" display-tooltip-when-elided="true" name="notConnectedLabel" style="-unity-text-align: middle-center; -unity-font-style: bold; color: rgb(255, 216, 30);" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="connected" tooltip="Connected." style="flex-direction: row; align-items: center;">
+                        <ui:VisualElement name="connectedIcon" tooltip="Connected." style="background-image: url(&apos;project://database/Assets/PampelGames/AIEngine/Editor/Icons/CheckmarkIcon.png?fileID=2800000&amp;guid=a2a9d21d0fb4d954695147c0b8a9e81b&amp;type=3#CheckmarkIcon&apos;); width: 18px; height: 18px; opacity: 0;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="connecting" style="flex-direction: row; align-items: center;">
+                        <ui:VisualElement name="connectingIcon" style="background-image: url(&apos;project://database/Assets/PampelGames/AIEngine/Editor/Icons/WIFI-Icon.png?fileID=2800000&amp;guid=285acd46feaeeb640b3f551105c2c836&amp;type=3#WIFI-Icon&apos;); width: 18px; height: 18px;" />
+                        <ui:Label text="Connecting..." display-tooltip-when-elided="true" name="connectingLabel" style="-unity-text-align: middle-center; -unity-font-style: bold;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="InputIconsTopRight" style="flex-direction: row; align-items: center;">
+                    <ui:VisualElement name="historyIcon" style="width: 22px; height: 22px; background-image: url(&apos;project://database/Assets/PampelGames/AIEngine/Editor/Icons/HistoryIcon.png?fileID=2800000&amp;guid=b2e98ed8620fb34429d3e099b06f10b3&amp;type=3#HistoryIcon&apos;); margin-left: 2px; margin-right: 2px;" />
+                    <ui:VisualElement name="globalSettings" style="width: 22px; height: 22px; background-image: url(&apos;project://database/Assets/PampelGames/Shared/Editor/Icons/GlobalSettingsIcon.png?fileID=2800000&amp;guid=b6787669ec9ac4946b421694cf5c7677&amp;type=3#GlobalSettingsIcon&apos;); margin-right: 2px;" />
+                    <ui:VisualElement name="documentation" style="background-image: url(&apos;project://database/Assets/PampelGames/Shared/Editor/Icons/DocumentationIcon.png?fileID=2800000&amp;guid=893673826e0094443bd45b4020d06618&amp;type=3#DocumentationIcon&apos;); width: 22px; height: 22px;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:TextField picking-mode="Ignore" name="input" multiline="true" style="height: 80px; white-space: normal;" />
+            <ui:VisualElement name="InputIconsBottom" style="flex-direction: row; justify-content: space-between;">
+                <ui:VisualElement name="InputIconsBottomLeft" style="flex-direction: row; margin-left: 2px;">
+                    <ui:Label display-tooltip-when-elided="true" name="infoText" style="-unity-text-align: middle-left;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="InputIconsBottomRight" style="flex-direction: row-reverse; padding-right: 2px;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="Prefabs" class="drawTopLine drawBottomLine" style="flex-direction: row; justify-content: space-between; padding-top: 5px; padding-bottom: 5px; margin-top: 0; margin-bottom: 5px; padding-left: 2px;">
+            <ui:VisualElement name="PrefabsLeft" style="flex-direction: row; align-items: center; flex-grow: 1;">
+                <ui:Label text="Prefabs" display-tooltip-when-elided="true" name="prefabsLabel" enable-rich-text="true" style="-unity-text-align: middle-left; width: 85px;" />
+                <uie:IntegerField value="42" name="prefabsAmount" readonly="true" class="integerFieldNoLabel" style="width: 45px;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="PrefabsRight" style="flex-direction: row; padding-right: 2px;">
+                <ui:VisualElement name="selectPrefabs" style="background-image: url(&apos;project://database/Assets/PampelGames/AIEngine/Editor/Icons/SelectHandIcon.png?fileID=2800000&amp;guid=be8512ffd4b530d4c85b070d41b72a0e&amp;type=3#SelectHandIcon&apos;); width: 20px; height: 20px; margin-left: 2px; margin-right: 2px;" />
+                <ui:VisualElement name="clearPrefabs" style="background-image: url(&apos;project://database/Assets/PampelGames/AIEngine/Editor/Icons/ClearIcon.png?fileID=2800000&amp;guid=5f2894b38b5b32240a93eb4d0b3c987d&amp;type=3#ClearIcon&apos;); width: 20px; height: 20px;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="References" class="drawBottomLine" style="flex-direction: row; justify-content: space-between; padding-top: 0; padding-bottom: 5px; margin-top: 0; margin-bottom: 5px; padding-left: 2px;">
+            <ui:VisualElement name="ReferencesLeft" style="flex-direction: row; align-items: center; flex-grow: 1;">
+                <ui:Label text="References" display-tooltip-when-elided="true" name="referencesLabel" enable-rich-text="true" style="-unity-text-align: middle-left; width: 85px;" />
+                <uie:IntegerField value="42" name="referencesAmount" readonly="true" class="integerFieldNoLabel" style="width: 45px;" />
+                <ui:VisualElement name="referencesBehaviour" style="flex-direction: row;">
+                    <ui:VisualElement name="referencesUnlocked" style="width: 20px; height: 20px; background-image: url(&apos;project://database/Assets/PampelGames/AIEngine/Editor/Icons/LockOpen.png?fileID=2800000&amp;guid=c596d939305f6dc468471c4d2e5bf846&amp;type=3#LockOpen&apos;);" />
+                    <ui:VisualElement name="referencesLocked" style="width: 20px; height: 20px; background-image: url(&apos;project://database/Assets/PampelGames/AIEngine/Editor/Icons/LockClosed.png?fileID=2800000&amp;guid=4804409b127af9a44bc163a40ee8f284&amp;type=3#LockClosed&apos;);" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="ReferencesRight" style="flex-direction: row; padding-right: 2px;">
+                <ui:VisualElement name="selectReferences" style="background-image: url(&apos;project://database/Assets/PampelGames/AIEngine/Editor/Icons/SelectHandIcon.png?fileID=2800000&amp;guid=be8512ffd4b530d4c85b070d41b72a0e&amp;type=3#SelectHandIcon&apos;); width: 20px; height: 20px; margin-left: 2px; margin-right: 2px;" />
+                <ui:VisualElement name="clearReferences" style="background-image: url(&apos;project://database/Assets/PampelGames/AIEngine/Editor/Icons/ClearIcon.png?fileID=2800000&amp;guid=5f2894b38b5b32240a93eb4d0b3c987d&amp;type=3#ClearIcon&apos;); width: 20px; height: 20px;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="Information">
+            <ui:VisualElement name="Tokens" style="flex-wrap: wrap-reverse;">
+                <uie:IntegerField value="42" name="tokensLast" readonly="true" class="integerFieldNoLabel" style="font-size: 11px; height: 17px;" />
+                <uie:IntegerField value="42" name="tokensTotal" readonly="true" class="integerFieldNoLabel" style="font-size: 11px;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

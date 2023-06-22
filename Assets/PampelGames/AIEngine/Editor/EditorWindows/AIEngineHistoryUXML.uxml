@@ -1,0 +1,17 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/PampelGames/Shared/Editor/StyleSheets/InspectorUSS.uss?fileID=7433441132597879392&amp;guid=a67aab0cbc3193846a6c4c491a7d7663&amp;type=3#InspectorUSS" />
+    <Style src="project://database/Assets/PampelGames/Shared/Editor/StyleSheets/WindowsUSS.uss?fileID=7433441132597879392&amp;guid=7a779955ffc451242a67f00465b55628&amp;type=3#WindowsUSS" />
+    <ui:ScrollView scroll-deceleration-rate="0,135" elasticity="0,1" mode="VerticalAndHorizontal">
+        <ui:VisualElement name="AIEngineHistory">
+            <ui:VisualElement name="Header" class="PGHeaderWrapper">
+                <ui:Label text="AI Engine - History" display-tooltip-when-elided="true" name="headerLabel" style="-unity-font-style: bold;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Settings" class="drawTopLine" style="margin-bottom: 5px;">
+                <uie:IntegerField label="Show last" value="3" name="showLast" style="flex-grow: 1;" />
+                <ui:Button text="Update" display-tooltip-when-elided="true" name="updateButton" style="width: 100px;" />
+                <ui:Button text="Clear History" display-tooltip-when-elided="true" name="clearHistoryButton" style="width: 100px;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="HistoryBlocks" />
+        </ui:VisualElement>
+    </ui:ScrollView>
+</ui:UXML>

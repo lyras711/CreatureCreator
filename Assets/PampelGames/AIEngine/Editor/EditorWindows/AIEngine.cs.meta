@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 20ed1f6aa3c9897408aa56999ae122d6
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - m_ViewDataDictionary: {instanceID: 0}
+  - windowIcon: {fileID: 2800000, guid: 99c080a6bbcd6eb49ab719a8d3830377, type: 3}
+  - _visualTree: {fileID: 9197481963319205126, guid: 356a4054de80bd44e9425acb87bd2a56, type: 3}
+  - aiEngineSettingsSo: {fileID: 11400000, guid: b627323f649427c41a28164f9fb0f50d, type: 2}
+  - chatGPTSettingsSo: {fileID: 11400000, guid: dc53472d9b9a11049ae3edff276a5c71, type: 2}
+  - historySo: {fileID: 11400000, guid: 0eb6c7940b420cd4b93a9dac4d84b6d5, type: 2}
+  - affixesSo: {fileID: 11400000, guid: d068e8e5090c429448d486241d738141, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
