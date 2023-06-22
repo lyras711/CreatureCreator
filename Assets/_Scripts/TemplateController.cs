@@ -62,7 +62,7 @@ public class TemplateController : MonoBehaviour
     {
         for (int i = 0; i < legRenderers.Length; i++)
         {
-            legRenderers[i].GetComponent<MudRenderer>().LockMesh(false, false);
+            legRenderers[i].GetComponent<MudRenderer>().LockMesh(false, true);
         }
         //AttatchToRig();
     }
