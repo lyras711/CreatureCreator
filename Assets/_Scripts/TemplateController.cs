@@ -335,9 +335,11 @@ public class TemplateController : MonoBehaviour
 
     void CreateMirrorBlob()
     {
+        float radius = deformObjTransform.GetComponent<MudSphere>().Radius;
+        int size = deformObjTransform.GetComponent<NewBone>().size;
         deformObjTransformMirror = Instantiate(deformObj, deformObjTransform.position, Quaternion.identity, initialReference).transform;
-        deformObjTransformMirror.GetComponent<MudSphere>().Radius = blobSize;
-        deformObjTransformMirror.GetComponent<NewBone>().size = blobsToRemove;
+        deformObjTransformMirror.GetComponent<MudSphere>().Radius = radius;
+        deformObjTransformMirror.GetComponent<NewBone>().size = size;
         deformObjTransform.GetComponent<NewBone>().SetMirrorBone(deformObjTransformMirror.gameObject);
         deformObjTransformMirror.GetComponent<NewBone>().SetMirrorBone(deformObjTransform.gameObject);
         deformObjTransformMirror.gameObject.SetActive(true);
