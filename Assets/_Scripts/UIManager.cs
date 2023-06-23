@@ -7,28 +7,10 @@ using MudBun;
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
-
-    public CamController camController;
-    public Slider blendSlider;
-    public Slider radiusSlider;
-    public Slider pivotSlider;
-
-    public Text selectedBoneNameText;
-
     public Transform camPivot;
 
     private Bone bone;
     private MudSphere deformSphere;
-
-    public GameObject fillPanel;
-    public GameObject deformPanel;
-    public GameObject rotateButton;
-    public GameObject boneColoring;
-
-    [Header("Nav")]
-    public Button meshButton;
-    public Button paintButton;
-    public Button addButton;
 
     [Header("Editing")]
     public GameObject blobDestroyButton;
@@ -38,7 +20,15 @@ public class UIManager : MonoBehaviour
     public Color deformColor;
     public Color destroyColor;
 
+    [Header("Colour References")]
+    public Color[] colorsToUse;
+    public GameObject blobColourTemplate;
+    public Transform blobColourParent;
+    public GameObject blobColoursPanel;
+    public GameObject blobSizesPanel;
+
     bool deform = true;
+    int blobSize;
 
     private void Awake()
     {
@@ -49,6 +39,16 @@ public class UIManager : MonoBehaviour
         else if (instance != this)
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void Start()
+    {
+        for (int i = 0; i < colorsToUse.Length; i++)
+        {
+            GameObject colour = Instantiate(blobColourTemplate, blobColourParent);
+            colour.transform.GetChild(0).GetComponent<Image>().color = colorsToUse[i];
+            colour.SetActive(true);
         }
     }
 
@@ -70,6 +70,29 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void TriggerBlobColours(bool active)
+    {
+        blobSizesPanel.SetActive(!active);
+        blobColoursPanel.SetActive(active);
+    }
+
+    public void SelectBlobSize(int size)
+    {
+        blobSize = size;
+
+        foreach (Transform item in blobColourParent)
+        {
+            item.GetChild(0).localScale = Vector3.one * (blobSize * 0.3f);
+        }
+        TriggerBlobColours(true);
+    }
+
+    public void SelectColour(Image image)
+    {
+        TemplateController.instance.CreateDeformSphere(blobSize, image.color);
+        TriggerBlobColours(false);
+    }
+
     public bool InAddMode()
     {
         return deform;
@@ -78,26 +101,6 @@ public class UIManager : MonoBehaviour
     public void SetSelectedBone(Bone bone) 
     {
         this.bone = bone;
-
-        selectedBoneNameText.text = bone.gameObject.name;
-
-        radiusSlider.value = bone.GetCurrentRadius();
-
-        blendSlider.gameObject.SetActive(true);
-        radiusSlider.gameObject.SetActive(true);
-        rotateButton.SetActive(true);
-    }
-
-    public void TriggerBoneColouringUI(bool active)
-    {
-        boneColoring.SetActive(active);
-    }
-
-    public void EnableNavButtons()
-    {
-        meshButton.interactable = true;
-        paintButton.interactable = true;
-        addButton.interactable = true;
     }
 
     public void SetBlend(float value)
@@ -134,38 +137,8 @@ public class UIManager : MonoBehaviour
         camPivot.rotation = rot;
     }
 
-    public void FillPanel()
-    {
-        fillPanel.SetActive(true);
-        deformPanel.SetActive(false);
-
-        DeselectBone();
-    }
-
-    public void DeformPanel()
-    {
-        if(bone!= null)
-        {
-            camController.SetToEditMode();
-            //camController.GoToBone(bone.transform);
-        }
-
-        fillPanel.SetActive(false);
-        deformPanel.SetActive(true);
-    }
-
     public void SetBlobsRemaining(int blobs)
     {
         blobsRemainingText.text = "Blobs Remaining: " + blobs;
-    }
-
-    public void DeselectBone()
-    {
-        if(bone != null)
-        {
-            bone.TriggerBoneSelection(false);
-            bone = null;
-        }
-        camController.GoBackToTransform();
     }
 }

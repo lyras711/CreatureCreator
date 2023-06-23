@@ -35,7 +35,10 @@ public class TemplateController : MonoBehaviour
 
     public int blobsRemaining = 20;
 
-    private Transform spawnedBlob;
+    [Header("Blob Sizes")]
+    public float small = 0.2f;
+    public float medium = 0.6f;
+    public float large = 1.2f;
 
     private void Awake()
     {
@@ -93,7 +96,6 @@ public class TemplateController : MonoBehaviour
 
                 if (hit.collider.GetComponent<NewBone>())
                 {
-
                     if (selectedNewBone != hit.collider.GetComponent<NewBone>())
                     {
                         selectedNewBone = hit.collider.GetComponent<NewBone>();
@@ -135,6 +137,7 @@ public class TemplateController : MonoBehaviour
                         Destroy(deformObjTransform.gameObject.GetComponent<SphereCollider>());
                         Destroy(deformObjTransform.GetChild(0).gameObject.GetComponent<SphereCollider>());
                     }
+                    break;
                 }
             }
         }
@@ -291,26 +294,27 @@ public class TemplateController : MonoBehaviour
         }
     }
 
-    public void Enable2LegTemplate()
-    {
-        //mudRenderer.gameObject.SetActive(true);
-        uiManager.EnableNavButtons();
-    }
-
-
     float blobSize;
     int blobsToRemove = 1;
     bool newBlob = false;
-    public void CreateDeformSphere(float size)
+    public void CreateDeformSphere(int size, Color color)
     {
-        if(blobToDestroy != null)
+        if (size == 1)
+            blobSize = small;
+        else if (size == 2)
+            blobSize = medium;
+        else if (size == 3)
+            blobSize = large;
+        else
+            blobSize = medium;
+
+        if (blobToDestroy != null)
         {
             if(blobToDestroy.transform.parent == initialReference)
             {
                 DestroyNewBone(blobToDestroy.GetComponent<NewBone>());
             }
         }
-        blobSize = size;
 
         if (!HaveBlobs())
             return;
@@ -326,8 +330,9 @@ public class TemplateController : MonoBehaviour
         Vector3 position = new Vector3(0, 1, 0);
 
         deformObjTransform = Instantiate(deformObj, position, Quaternion.identity, initialReference).transform;
-        deformObjTransform.GetComponent<MudSphere>().Radius = size;
+        deformObjTransform.GetComponent<MudSphere>().Radius = blobSize;
         deformObjTransform.GetComponent<NewBone>().size = blobsToRemove;
+        deformObjTransform.GetComponent<MudMaterial>().Color = color;
         deformObjTransform.gameObject.SetActive(true);
 
         uiManager.SetDeformSphere(deformObjTransform.GetComponent<MudSphere>());
@@ -342,6 +347,7 @@ public class TemplateController : MonoBehaviour
         deformObjTransformMirror.GetComponent<NewBone>().size = size;
         deformObjTransform.GetComponent<NewBone>().SetMirrorBone(deformObjTransformMirror.gameObject);
         deformObjTransformMirror.GetComponent<NewBone>().SetMirrorBone(deformObjTransform.gameObject);
+        deformObjTransformMirror.GetComponent<MudMaterial>().Color = deformObjTransform.GetComponent<MudMaterial>().Color;
         deformObjTransformMirror.gameObject.SetActive(true);
 
         float xPos;
@@ -356,7 +362,7 @@ public class TemplateController : MonoBehaviour
 
     bool HaveBlobs()
     {
-        if (blobSize == 0.2f)
+        if (blobSize == small)
         {
             if (blobsRemaining > 0)
             {
@@ -364,7 +370,7 @@ public class TemplateController : MonoBehaviour
                 return true;
             }
         }
-        if (blobSize == 0.5f)
+        if (blobSize == medium)
         {
             if (blobsRemaining > 1)
             {
@@ -372,7 +378,7 @@ public class TemplateController : MonoBehaviour
                 return true;
             }
         }
-        if (blobSize == 0.8f)
+        if (blobSize == large)
         {
             if (blobsRemaining > 2)
             {
