@@ -78,6 +78,20 @@ public class TemplateController : MonoBehaviour
         {
             legRenderers[i].GetComponent<BoneSetter>().SetParent();
         }
+
+        ClearChildren();
+    }
+
+    void ClearChildren()
+    {
+        for (int i = 0; i < legRenderers.Length; i++)
+        {
+            foreach (Transform item in legRenderers[i].transform)
+            {
+                if(item.name != "zip")
+                    Destroy(item.gameObject);
+            }
+        }
     }
 
     private void Update()
@@ -159,7 +173,7 @@ public class TemplateController : MonoBehaviour
                     {
                         blobParent = closestBone.parent;
                         deformObjTransform.parent = blobParent;
-
+                        deformObjTransform.SetSiblingIndex(blobParent.childCount - 2);
                         BoneSetter boneSetter = blobParent.GetComponent<BoneSetter>();
                         if (boneSetter.mirrorParent != null)
                             mirrorParent = boneSetter.mirrorParent;
@@ -169,7 +183,10 @@ public class TemplateController : MonoBehaviour
                     {
                         deformObjTransformMirror = selectedNewBone.mirrorBone.transform;
                         if (deformObjTransformMirror.parent != mirrorParent)
+                        {
                             deformObjTransformMirror.parent = mirrorParent;
+                            deformObjTransformMirror.SetSiblingIndex(mirrorParent.childCount - 2);
+                        }
                     }
 
                     float distanceToMiddle = Vector3.Distance(hitInfo.point, new Vector3(0, hitInfo.point.y, 0));
