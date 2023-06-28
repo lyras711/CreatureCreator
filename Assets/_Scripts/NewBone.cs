@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MudBun;
 
 public class NewBone : MonoBehaviour
 {
+    public MudMaterial mudMat;
     public Renderer editRef;
     public Material selectedMat;
     public Material defaultMat;
@@ -26,6 +28,11 @@ public class NewBone : MonoBehaviour
         }
         else
             editRef.material = defaultMat;
+    }
+
+    public void SetBoneColour(Color color)
+    {
+        mudMat.Color = color;
     }
 
     private void OnTriggerEnter(Collider other)

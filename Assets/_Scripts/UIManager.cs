@@ -28,6 +28,8 @@ public class UIManager : MonoBehaviour
     public Transform blobColourParent;
     public GameObject blobColoursPanel;
     public GameObject blobSizesPanel;
+    public GameObject selectedColorPanel;
+    public Image selectedColorIMG;
 
     bool deform = true;
     int blobSize;
@@ -86,13 +88,28 @@ public class UIManager : MonoBehaviour
         {
             item.GetChild(0).localScale = Vector3.one * (blobSize * 0.3f);
         }
-        TriggerBlobColours(true);
+        //TriggerBlobColours(true);
+        TemplateController.instance.CreateDeformSphere(blobSize, Color.white);
     }
 
     public void SelectColour(Image image)
     {
-        TemplateController.instance.CreateDeformSphere(blobSize, image.color);
-        TriggerBlobColours(false);
+        blobColoursPanel.SetActive(false);
+        TemplateController.instance.SetPaintColour(image.color);
+        selectedColorPanel.SetActive(true);
+        selectedColorIMG.color = image.color;
+    }
+
+    public void BackToColours()
+    {
+        blobColoursPanel.SetActive(true);
+        selectedColorPanel.SetActive(false);
+    }
+
+    public void DisableColours()
+    {
+        blobColoursPanel.SetActive(false);
+        selectedColorPanel.SetActive(false);
     }
 
     public void ExportCreationUI()

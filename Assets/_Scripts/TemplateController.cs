@@ -62,6 +62,7 @@ public class TemplateController : MonoBehaviour
         uiManager.SetBlobsRemaining(blobsRemaining);
     }
 
+    //Called when user is done with their creation. Locks Mudbun meshes
     public void CompleteMesh()
     {
         for (int i = 0; i < legRenderers.Length; i++)
@@ -71,6 +72,7 @@ public class TemplateController : MonoBehaviour
         AttatchToRig();
     }
 
+    //Sets the parent of all bones to their respective skeleton part
     void AttatchToRig()
     {
         skeletonRig.SetActive(true);
@@ -84,6 +86,7 @@ public class TemplateController : MonoBehaviour
 
     }
 
+    //Clear unecessary children from generated meshes
     void ClearChildren()
     {
         for (int i = 0; i < legRenderers.Length; i++)
@@ -125,6 +128,13 @@ public class TemplateController : MonoBehaviour
                     if (!uiManager.InAddMode())
                     {
                         DestroyNewBone(selectedNewBone);
+                    }
+
+                    if(paintMode)
+                    {
+                        if(colourSelected)
+                            PaintBone(selectedNewBone);
+                        return;
                     }
 
                     if (deformObjTransform == null)
@@ -254,19 +264,21 @@ public class TemplateController : MonoBehaviour
     }
 
 
-
-    public void SetBoneColour(Color color)
+    Color paintColor;
+    bool paintMode = false;
+    bool colourSelected = false;
+    public void SetPaintColour(Color color)
     {
-        if(selectedBone != null)
-        {
-            selectedBone.GetComponent<MudBun.MudMaterial>().Color = color;
-        }
-        if (selectedNewBone != null)
-        {
-            selectedNewBone.GetComponent<MudBun.MudMaterial>().Color = color;
-        }
+        paintColor = color;
+        colourSelected = true;
     }
     
+    public void TriggerColouring(bool active)
+    {
+        paintMode = active;
+        if (!paintMode)
+            colourSelected = false;
+    }
 
     public void TriggerItem()
     {
@@ -297,7 +309,6 @@ public class TemplateController : MonoBehaviour
 
     public void TriggerColoursVisible(bool active)
     {
-        //TriggerBonesVisible(active);
         TriggerNewBonesVisible(active);
     }
 
@@ -529,5 +540,13 @@ public class TemplateController : MonoBehaviour
         }
 
         Destroy(bone.gameObject);
+    }
+
+    void PaintBone(NewBone bone)
+    {
+        bone.SetBoneColour(paintColor);
+
+        if (bone.mirrorBone != null)
+            bone.mirrorBone.GetComponent<MudMaterial>().Color = paintColor;
     }
 }
