@@ -29,6 +29,7 @@ public class UINav : MonoBehaviour
         DisableAllTabs();
         meshTab.SetActive(true);
         UIManager.instance.TriggerBlobColours(true);
+        templateController.TriggerNewBonesVisible(true);
         templateController.TriggerColouring(true);
     }
 

@@ -1,8 +1,17 @@
 fileFormatVersion: 2
-guid: 7cf86150796d24a5885624b234da00cf
+guid: 23bee49134610fb4ba07261bb17393a7
 ModelImporter:
   serializedVersion: 21300
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: -3100369314251171874
+    second: Idle
+  - first:
+      74: -1610863427237328480
+    second: Walking
+  - first:
+      74: 6720303635017113406
+    second: Attack
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -32,7 +41,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
     globalScale: 1
@@ -88,7 +97,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.01
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
