@@ -11,8 +11,10 @@ public class CamController : MonoBehaviour
     public GameObject deformLayer1;
     public GameObject deformLayer2;
     public GameObject deformLayer3;
+    public GameObject deformLayer4;
 
     bool deformlayer1 = true;
+    bool middleLayer = false;
 
     private void Start()
     {
@@ -54,18 +56,41 @@ public class CamController : MonoBehaviour
         transform.parent.DORotate(newRot, 0.5f).OnComplete(() => rotating = false);
 
         deformlayer1 = !deformlayer1;
+        UIManager.instance.TriggerChangeLayersButton(!deformlayer1);
 
         if (deformlayer1)
         {
             deformLayer1.SetActive(true);
             deformLayer2.SetActive(false);
             deformLayer3.SetActive(false);
+            deformLayer4.SetActive(false);
         }
         else
         {
             deformLayer1.SetActive(false);
             deformLayer2.SetActive(true);
             deformLayer3.SetActive(true);
+            deformLayer4.SetActive(false);
+        }
+    }
+
+    public void ChangeLayer()
+    {
+        middleLayer = !middleLayer;
+
+        if(middleLayer)
+        {
+            deformLayer1.SetActive(false);
+            deformLayer2.SetActive(false);
+            deformLayer3.SetActive(false);
+            deformLayer4.SetActive(true);
+        }
+        else
+        {
+            deformLayer1.SetActive(false);
+            deformLayer2.SetActive(true);
+            deformLayer3.SetActive(true);
+            deformLayer4.SetActive(false);
         }
     }
 }

@@ -7,6 +7,7 @@ using MudBun;
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
+    public UINav uiNav;
     public Transform camPivot;
 
     private Bone bone;
@@ -19,6 +20,7 @@ public class UIManager : MonoBehaviour
     public Text blobsRemainingText;
     public Color deformColor;
     public Color destroyColor;
+    public GameObject editingLayersButton;
 
     [Header("Colour References")]
     public Color[] colorsToUse;
@@ -91,6 +93,16 @@ public class UIManager : MonoBehaviour
     {
         TemplateController.instance.CreateDeformSphere(blobSize, image.color);
         TriggerBlobColours(false);
+    }
+
+    public void ExportCreationUI()
+    {
+        uiNav.CompleteBuild();
+    }
+
+    public void TriggerChangeLayersButton(bool active)
+    {
+        editingLayersButton.SetActive(active);
     }
 
     public bool InAddMode()

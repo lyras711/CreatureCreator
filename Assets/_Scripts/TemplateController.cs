@@ -6,6 +6,7 @@ using MudBun;
 public class TemplateController : MonoBehaviour
 {
     public static TemplateController instance;
+    public BasicExporter basicExporter;
 
     UtilityFunctions utils;
     UIManager uiManager;
@@ -65,7 +66,7 @@ public class TemplateController : MonoBehaviour
     {
         for (int i = 0; i < legRenderers.Length; i++)
         {
-            legRenderers[i].GetComponent<MudRenderer>().LockMesh(false, true);
+            legRenderers[i].LockMesh(false, true);
         }
         AttatchToRig();
     }
@@ -78,8 +79,9 @@ public class TemplateController : MonoBehaviour
         {
             legRenderers[i].GetComponent<BoneSetter>().SetParent();
         }
-
+        uiManager.ExportCreationUI();
         ClearChildren();
+
     }
 
     void ClearChildren()
@@ -92,6 +94,10 @@ public class TemplateController : MonoBehaviour
                     Destroy(item.gameObject);
             }
         }
+
+        //yield return new WaitForEndOfFrame();
+
+        //basicExporter.ExportObject(skeletonRig);
     }
 
     private void Update()
@@ -189,7 +195,7 @@ public class TemplateController : MonoBehaviour
                         }
                     }
 
-                    float distanceToMiddle = Vector3.Distance(hitInfo.point, new Vector3(0, hitInfo.point.y, 0));
+                    float distanceToMiddle = Vector3.Distance(hitInfo.point, new Vector3(0, hitInfo.point.y, hitInfo.point.z));
 
                     if (distanceToMiddle > 0.6f)
                     {

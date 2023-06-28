@@ -14,6 +14,11 @@ public class UINav : MonoBehaviour
         TemplateController.instance.TriggerNewBonesVisible(false);
     }
 
+    public void CompleteBuild()
+    {
+        gameObject.SetActive(false);
+    }
+
     public void OpenMeshTab()
     {
         DisableAllTabs();
