@@ -119,11 +119,11 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _ColorDim: {r: 0, g: 0.5734933, b: 0.8490566, a: 0.85056}
     - _ColorDimCurve: {r: 0.5660378, g: 0.54569244, b: 0.54200786, a: 0.85056}
-    - _ColorDimExtra: {r: 0.3317462, g: 0.47931978, b: 0.990566, a: 0.85056}
+    - _ColorDimExtra: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 0.8509804}
     - _ColorDimSteps: {r: 1, g: 1, b: 1, a: 0.85056}
     - _ColorGradient: {r: 1, g: 0.5235849, b: 0.5235849, a: 0.85056}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FlatRimColor: {r: 0.9528302, g: 0.34612903, b: 0.15730685, a: 0.85056}
+    - _FlatRimColor: {r: 0.2830189, g: 0.2830189, b: 0.2830189, a: 0.85056}
     - _FlatSpecularColor: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
-    - _UnityShadowColor: {r: 0.85023, g: 0.85034, b: 0.8504499, a: 0.85056}
+    - _UnityShadowColor: {r: 0.16078432, g: 0.16078432, b: 0.16078432, a: 0.8509804}
   m_BuildTextureStacks: []
