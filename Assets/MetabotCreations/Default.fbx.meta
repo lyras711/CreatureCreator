@@ -12,7 +12,22 @@ ModelImporter:
   - first:
       74: 6720303635017113406
     second: Attack
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Default_Mud_Locked_Mesh__Built_In_RP_
+    second: {fileID: 2100000, guid: 6553092a457084564b7358de2c9349cb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: RaptorBotZip
+    second: {fileID: 2100000, guid: d184e09bc8b284539a958619637457f2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: zip_eyes
+    second: {fileID: 2100000, guid: b2144cb8ecee645f497a3b2d1b08d4b6, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

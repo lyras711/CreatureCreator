@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-// This class is created for the example scene. There is no support for this script.
 namespace UnityStandardAssets.Utility
 {
     [Serializable]

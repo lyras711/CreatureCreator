@@ -8,13 +8,15 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: cylinder
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: f7e38193b7f064d7380403618fd8b69e, type: 3}
   m_ValidKeywords:
-  - _EMISSION
-  m_InvalidKeywords:
   - DR_CEL_EXTRA_ON
-  - _CELPRIMARYMODE_SINGLE
+  - DR_GRADIENT_ON
+  - DR_RIM_ON
   - _TEXTUREBLENDINGMODE_MULTIPLY
+  m_InvalidKeywords:
+  - _CELPRIMARYMODE_NONE
+  - _EMISSION
   - _UNITYSHADOWMODE_NONE
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 1
@@ -74,42 +76,44 @@ Material:
     - _BumpScale: 1
     - _CelExtraEnabled: 1
     - _CelNumSteps: 4
-    - _CelPrimaryMode: 1
+    - _CelPrimaryMode: 0
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _FlatRimEdgeSmoothness: 0.3
+    - _FlatRimEdgeSmoothness: 0.59
     - _FlatRimLightAlign: 0.201
-    - _FlatRimSize: 0.073
+    - _FlatRimSize: 0.066
     - _FlatSpecularEdgeSmoothness: 0
     - _FlatSpecularSize: 0.1
-    - _Flatness: 0.611
+    - _Flatness: 0.34
     - _FlatnessExtra: 1
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _GradientAngle: 0
     - _GradientCenterX: 0
-    - _GradientCenterY: 0
-    - _GradientEnabled: 0
-    - _GradientSize: 10
+    - _GradientCenterY: -5.2
+    - _GradientEnabled: 1
+    - _GradientSize: 16.35
     - _LightContribution: 0
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
+    - _OutlineDepthOffset: 0
+    - _OutlineWidth: 0
     - _Parallax: 0.02
-    - _RimEnabled: 0
+    - _RimEnabled: 1
     - _SelfShadingSize: 1
     - _SelfShadingSizeExtra: 0.795
-    - _ShadowEdgeSize: 0.199
-    - _ShadowEdgeSizeExtra: 0.097
+    - _ShadowEdgeSize: 0.231
+    - _ShadowEdgeSizeExtra: 0.164
     - _Shininess: 0.078125
     - _SmoothnessTextureChannel: 0
     - _SpecularEnabled: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _TextureBlendingMode: 0
-    - _TextureImpact: 0.979
+    - _TextureImpact: 0.358
     - _UVSec: 0
     - _UnityShadowMode: 0
     - _UnityShadowPower: 0.2
@@ -117,14 +121,15 @@ Material:
     - _VertexColorsEnabled: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.13394447, g: 0.6603774, b: 0.257033, a: 1}
-    - _ColorDim: {r: 0.67602575, g: 0.64644885, b: 0.6886792, a: 0.85056}
-    - _ColorDimCurve: {r: 0.85023, g: 0.85034, b: 0.8504499, a: 0.85056}
-    - _ColorDimExtra: {r: 0.10711107, g: 0.15960099, b: 0.2735849, a: 0.85056}
+    - _Color: {r: 0.22368261, g: 0.509434, b: 0.14658241, a: 1}
+    - _ColorDim: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 0.85056}
+    - _ColorDimCurve: {r: 0.6981132, g: 0.6981132, b: 0.6981132, a: 0.85056}
+    - _ColorDimExtra: {r: 0.15686187, g: 0.4433962, b: 0.31283557, a: 0.85056}
     - _ColorDimSteps: {r: 0.85023, g: 0.85034, b: 0.8504499, a: 0.85056}
-    - _ColorGradient: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
+    - _ColorGradient: {r: 0.028127363, g: 0.02429691, b: 0.05660379, a: 0.85056}
     - _EmissionColor: {r: 0.062077258, g: 0.2924528, b: 0.08889973, a: 1}
-    - _FlatRimColor: {r: 0.7075472, g: 0.5935776, b: 0.09678713, a: 0.85056}
+    - _FlatRimColor: {r: 0.11058207, g: 0.24228184, b: 0.3301887, a: 0.85056}
     - _FlatSpecularColor: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
+    - _OutlineColor: {r: 1, g: 1, b: 1, a: 0.85056}
     - _UnityShadowColor: {r: 0.85023, g: 0.85034, b: 0.8504499, a: 0.85056}
   m_BuildTextureStacks: []
